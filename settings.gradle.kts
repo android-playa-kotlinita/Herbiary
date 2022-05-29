@@ -4,6 +4,7 @@ pluginManagement {
         google()
         mavenCentral()
     }
+    includeBuild("/gradle/build-logic")
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -12,5 +13,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+enableFeaturePreview("VERSION_CATALOGS")
+
 rootProject.name = "Herbiary"
-include ':app'
+include(":app")
