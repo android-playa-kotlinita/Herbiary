@@ -4,7 +4,7 @@ pluginManagement {
         google()
         mavenCentral()
     }
-    includeBuild("/gradle/build-logic")
+    includeBuild("gradle/build-logic")
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
