@@ -1,6 +1,7 @@
 plugins {
     id("com.apk.herbiary.application")
     id("com.apk.herbiary.application.compose")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -38,5 +39,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
+    implementation(libs.firebase.firestore)
 
 }

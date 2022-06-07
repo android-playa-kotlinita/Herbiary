@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "65932559240",
+    "project_id": "herbiary-a0e9b",
+    "storage_bucket": "herbiary-a0e9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65932559240:android:662d44f024fb1de842703d",
+        "android_client_info": {
+          "package_name": "com.apk.herbiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65932559240-n894t3t8mr9sjksuut9pi15k5cmqdu8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKW9H7UL58ZyG3Y8g2yCi9pPpPJWnJz0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65932559240-n894t3t8mr9sjksuut9pi15k5cmqdu8s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
