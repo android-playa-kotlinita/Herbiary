@@ -32,7 +32,7 @@ fun Project.configureJacoco(androidCommonExtension: AndroidComponentsExtension<*
 
     androidCommonExtension.onVariants { variant ->
         val testTaskName = "test${variant.name.capitalize()}UnitTest"
-        //val coverageTaskName = "create${variant.name.capitalize()}CoverageReport"
+
         val reportTask =
             tasks.register("jacoco${testTaskName.capitalize()}Report", JacocoReport::class) {
                 dependsOn(testTaskName)
