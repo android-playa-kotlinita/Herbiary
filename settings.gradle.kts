@@ -16,4 +16,8 @@ dependencyResolutionManagement {
 enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "Herbiary"
-include(":app")
+rootDir.listFiles()?.filter {
+    File(it, "build.gradle.kts").exists()
+}?.forEach {
+    include(it.name)
+}
