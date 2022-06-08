@@ -1,4 +1,4 @@
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.gradle.LibraryExtension
 import com.apk.herbiary.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -8,7 +8,7 @@ class AndroidLibraryComposeConventionPlugin: Plugin<Project> {
     override fun apply(project: Project) {
         with(project){
             pluginManager.apply("com.android.library")
-            val extension = extensions.getByType<BaseAppModuleExtension>()
+            val extension = extensions.getByType<LibraryExtension>()
             configureAndroidCompose(extension)
         }
     }
