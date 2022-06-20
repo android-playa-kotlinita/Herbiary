@@ -3,6 +3,8 @@ plugins {
     id("com.apk.herbiary.application.compose")
     id("com.google.gms.google-services")
     id("kotlin-kapt")
+    id("com.apk.herbiary.application.jacoco")
+    id("jacoco")
 }
 
 android {
@@ -42,6 +44,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.firebase.firestore)
+    testImplementation(libs.junit4)
 
     //hilt
     implementation(libs.hilt.android)
@@ -51,5 +54,6 @@ dependencies {
 
     //module
     implementation(project(":feature-authentication"))
+
 
 }
