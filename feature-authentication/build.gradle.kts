@@ -4,5 +4,7 @@ plugins{
 }
 
 dependencies{
+    implementation(libs.androidx.compose.material)
+    implementation(libs.hilt.navigation.compose)
 
 }

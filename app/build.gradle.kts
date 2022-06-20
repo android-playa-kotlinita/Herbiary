@@ -2,6 +2,7 @@ plugins {
     id("com.apk.herbiary.application")
     id("com.apk.herbiary.application.compose")
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -31,6 +32,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.foundation)
@@ -40,5 +42,14 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.firebase.firestore)
+
+    //hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.lifecycle.viewmodel)
+    implementation(libs.hilt.navigation.compose)
+
+    //module
+    implementation(project(":feature-authentication"))
 
 }
