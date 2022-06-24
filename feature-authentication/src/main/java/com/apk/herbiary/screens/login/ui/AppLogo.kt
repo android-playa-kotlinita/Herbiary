@@ -1,4 +1,4 @@
-package com.apk.herbiary.screens.login
+package com.apk.herbiary.screens.login.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

@@ -9,4 +9,6 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="not_a_member_yet">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="already_have_account">Already have an account</string>
 </resources>
