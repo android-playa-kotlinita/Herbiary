@@ -16,10 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.apk.herbiary.feature.authentication.R
-import com.apk.herbiary.screens.login.ui.AppLogo
-import com.apk.herbiary.screens.login.ui.ConfirmationPasswordTextField
-import com.apk.herbiary.screens.login.ui.PasswordTextField
-import com.apk.herbiary.screens.login.ui.SignUpButton
+import com.apk.herbiary.screens.login.ui.*
 
 @Composable
 fun SignUpScreen(navController: NavHostController) {
@@ -85,18 +82,9 @@ fun SignUpScreen(navController: NavHostController) {
                     fontSize = 14.sp
                 )
             }
-            OutlinedButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(28.dp)
-            ) {
-                Icon(
-                    painterResource(id = R.drawable.ic_google), contentDescription = stringResource(
-                        id = R.string.sign_in_with_google
-                    ), tint = Color.Unspecified
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(stringResource(R.string.sign_in_with_google), color = Color.Black)
+
+            GoogleSignInButton {
+                //TODO: OnClickImpl
             }
 
             TextButton(onClick = { /*TODO*/ }, contentPadding = PaddingValues(2.dp)) {

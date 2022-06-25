@@ -11,4 +11,10 @@
     <string name="sign_up">Sign up</string>
     <string name="confirm_password">Confirm password</string>
     <string name="already_have_account">Already have an account</string>
+    <string name="recover_password_title">Forgot your password?</string>
+    <string name="recover_password_description">Please enter the username you\'d like your password information sent to</string>
+    <string name="continue_text">Continue</string>
+    <string name="reset_password">Reset password</string>
+    <string name="password_change">Password Reset</string>
+    <string name="password_reset_description">Enter your new password</string>
 </resources>
