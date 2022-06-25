@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Auth</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Login</string>
+    <string name="app_name">Herbiary</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="not_a_member_yet">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="already_have_account">Already have an account</string>
+    <string name="recover_password_title">Forgot your password?</string>
+    <string name="recover_password_description">Please enter the username you\'d like your password information sent to</string>
+    <string name="continue_text">Continue</string>
+    <string name="reset_password">Reset password</string>
+    <string name="password_change">Password Reset</string>
+    <string name="password_reset_description">Enter your new password</string>
+</resources>

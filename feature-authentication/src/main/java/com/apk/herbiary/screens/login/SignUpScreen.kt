@@ -16,13 +16,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.apk.herbiary.feature.authentication.R
-import com.apk.herbiary.screens.login.ui.AppLogo
-import com.apk.herbiary.screens.login.ui.GoogleSignInButton
-import com.apk.herbiary.screens.login.ui.PasswordTextField
-import com.apk.herbiary.screens.login.ui.SignUpButton
+import com.apk.herbiary.screens.login.ui.*
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun SignUpScreen(navController: NavHostController) {
     Surface {
         Column(
             modifier = Modifier
@@ -48,7 +45,9 @@ fun LoginScreen(navController: NavHostController) {
 
 
             var password by remember { mutableStateOf("") }
+            var confirmPassword by remember { mutableStateOf("") }
             var hasError by remember { mutableStateOf(false) }
+            var hasErrorConfirm by remember { mutableStateOf(false) }
 
             PasswordTextField(
                 password = password,
@@ -56,20 +55,15 @@ fun LoginScreen(navController: NavHostController) {
                 labelText = stringResource(id = R.string.password),
                 hasError = hasError
             )
+            Spacer(modifier = Modifier.height(12.dp))
 
-            TextButton(
-                onClick = { /*TODO*/ },
-                contentPadding = PaddingValues(2.dp),
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(2.dp)
-            ) {
-                Text(
-                    stringResource(R.string.forgot_password),
-                    fontSize = 12.sp,
-                    color = colorResource(id = R.color.green)
-                )
-            }
+            ConfirmationPasswordTextField(
+                password = confirmPassword,
+                confirmPassword = password,
+                onTextChange = { confirmPassword = it },
+                labelText = stringResource(id = R.string.confirm_password),
+                hasError = hasErrorConfirm
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -84,21 +78,28 @@ fun LoginScreen(navController: NavHostController) {
                 shape = RoundedCornerShape(28.dp)
             ) {
                 Text(
-                    stringResource(id = R.string.log_in),
+                    stringResource(id = R.string.sign_up),
                     fontSize = 14.sp
                 )
             }
+
             GoogleSignInButton {
                 //TODO: OnClickImpl
             }
 
-            SignUpButton()
+            TextButton(onClick = { /*TODO*/ }, contentPadding = PaddingValues(2.dp)) {
+                Text(
+                    stringResource(R.string.already_have_account),
+                    fontSize = 12.sp,
+                    color = colorResource(id = R.color.green)
+                )
+            }
         }
     }
 }
 
 @Preview
 @Composable
-fun DefaultPreview() {
-    LoginScreen(navController = rememberNavController())
+fun DefaultSignUpPreview() {
+    SignUpScreen(navController = rememberNavController())
 }
