@@ -3,7 +3,7 @@
     <string name="module_name">Auth</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Sign in</string>
     <string name="app_name">Herbiary</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="forgot_password">Forgot password?</string>
