@@ -1,20 +1,18 @@
 package com.apk.herbiary.screens.login
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.apk.herbiary.feature.authentication.R
 import com.apk.herbiary.screens.login.ui.AppLogo
 import com.apk.herbiary.screens.login.ui.GoogleSignInButton
@@ -22,10 +20,39 @@ import com.apk.herbiary.screens.login.ui.PasswordTextField
 import com.apk.herbiary.screens.login.ui.SignUpButton
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun LoginRoute(
+    modifier: Modifier = Modifier,
+    navigateToSignUp: () -> Unit,
+    navigateToPasswordRecovery: () -> Unit,
+    navigateToHome: () -> Unit,
+    viewModel: LoginViewModel = hiltViewModel()
+) {
+    val uiState: LoginUiState by viewModel.uiState.collectAsState()
+    LoginScreen(
+        navigateToSignUp = navigateToSignUp,
+        navigateToPasswordRecovery = navigateToPasswordRecovery,
+        loginScreenUiState = uiState,
+        navigateToHome = navigateToHome,
+        onAttemptLogin = viewModel::attemptLogin
+    )
+}
+
+@VisibleForTesting
+@Composable
+internal fun LoginScreen(
+    modifier: Modifier = Modifier,
+    navigateToSignUp: () -> Unit,
+    navigateToPasswordRecovery: () -> Unit,
+    navigateToHome: () -> Unit,
+    loginScreenUiState: LoginUiState,
+    onAttemptLogin: (email: String, password: String) -> Unit
+) {
+    if (loginScreenUiState is LoginUiState.Success)
+        navigateToHome()
+
     Surface {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp)
                 .fillMaxHeight(),
@@ -35,12 +62,12 @@ fun LoginScreen(navController: NavHostController) {
             AppLogo()
             Spacer(modifier = Modifier.height(64.dp))
 
-            var text by remember { mutableStateOf("") }
+            var email by remember { mutableStateOf("") }
 
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = text,
-                onValueChange = { text = it },
+                value = email,
+                onValueChange = { email = it },
                 label = { Text(stringResource(id = R.string.username)) }
             )
 
@@ -58,7 +85,7 @@ fun LoginScreen(navController: NavHostController) {
             )
 
             TextButton(
-                onClick = { /*TODO*/ },
+                onClick = navigateToPasswordRecovery,
                 contentPadding = PaddingValues(2.dp),
                 modifier = Modifier
                     .align(Alignment.End)
@@ -74,7 +101,7 @@ fun LoginScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { onAttemptLogin(email, password) },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = colorResource(id = R.color.green),
@@ -92,7 +119,7 @@ fun LoginScreen(navController: NavHostController) {
                 //TODO: OnClickImpl
             }
 
-            SignUpButton()
+            SignUpButton(onClick = navigateToSignUp)
         }
     }
 }
@@ -100,5 +127,9 @@ fun LoginScreen(navController: NavHostController) {
 @Preview
 @Composable
 fun DefaultPreview() {
-    LoginScreen(navController = rememberNavController())
+    LoginScreen(navigateToSignUp = {},
+        navigateToPasswordRecovery = {},
+        loginScreenUiState = LoginUiState.Empty,
+        onAttemptLogin = { _: String, _: String -> },
+        navigateToHome = {})
 }

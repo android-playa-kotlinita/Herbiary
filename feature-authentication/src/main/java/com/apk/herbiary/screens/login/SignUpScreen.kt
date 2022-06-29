@@ -1,25 +1,31 @@
 package com.apk.herbiary.screens.login
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.apk.herbiary.feature.authentication.R
-import com.apk.herbiary.screens.login.ui.*
+import com.apk.herbiary.screens.login.ui.AppLogo
+import com.apk.herbiary.screens.login.ui.ConfirmationPasswordTextField
+import com.apk.herbiary.screens.login.ui.GoogleSignInButton
+import com.apk.herbiary.screens.login.ui.PasswordTextField
 
 @Composable
-fun SignUpScreen(navController: NavHostController) {
+fun SignUpRoute(onBackClick: () -> Unit) {
+    SignUpScreen(onBackClick = onBackClick)
+}
+
+@VisibleForTesting
+@Composable
+internal fun SignUpScreen(onBackClick: () -> Unit) {
     Surface {
         Column(
             modifier = Modifier
@@ -101,5 +107,5 @@ fun SignUpScreen(navController: NavHostController) {
 @Preview
 @Composable
 fun DefaultSignUpPreview() {
-    SignUpScreen(navController = rememberNavController())
+    SignUpScreen(onBackClick = {})
 }
