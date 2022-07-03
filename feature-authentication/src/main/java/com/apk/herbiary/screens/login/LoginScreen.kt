@@ -16,24 +16,26 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.apk.herbiary.feature.authentication.R
 import com.apk.herbiary.screens.login.ui.AppLogo
 import com.apk.herbiary.screens.login.ui.GoogleSignInButton
+import com.apk.herbiary.screens.login.ui.NonBackgroundTextButton
 import com.apk.herbiary.screens.login.ui.PasswordTextField
-import com.apk.herbiary.screens.login.ui.SignUpButton
 
 @Composable
 fun LoginRoute(
-    modifier: Modifier = Modifier,
     navigateToSignUp: () -> Unit,
     navigateToPasswordRecovery: () -> Unit,
     navigateToHome: () -> Unit,
     viewModel: LoginViewModel = hiltViewModel()
 ) {
     val uiState: LoginUiState by viewModel.uiState.collectAsState()
+    val navigationState: Boolean by viewModel.navigationFlow.collectAsState(initial = false)
+
     LoginScreen(
         navigateToSignUp = navigateToSignUp,
         navigateToPasswordRecovery = navigateToPasswordRecovery,
         loginScreenUiState = uiState,
         navigateToHome = navigateToHome,
-        onAttemptLogin = viewModel::attemptLogin
+        onAttemptLogin = viewModel::attemptLogin,
+        navigationState = navigationState
     )
 }
 
@@ -45,9 +47,10 @@ internal fun LoginScreen(
     navigateToPasswordRecovery: () -> Unit,
     navigateToHome: () -> Unit,
     loginScreenUiState: LoginUiState,
+    navigationState: Boolean,
     onAttemptLogin: (email: String, password: String) -> Unit
 ) {
-    if (loginScreenUiState is LoginUiState.Success)
+    if(navigationState)
         navigateToHome()
 
     Surface {
@@ -84,19 +87,14 @@ internal fun LoginScreen(
                 hasError = hasError
             )
 
-            TextButton(
-                onClick = navigateToPasswordRecovery,
-                contentPadding = PaddingValues(2.dp),
+            NonBackgroundTextButton(
                 modifier = Modifier
                     .align(Alignment.End)
-                    .padding(2.dp)
-            ) {
-                Text(
-                    stringResource(R.string.forgot_password),
-                    fontSize = 12.sp,
-                    color = colorResource(id = R.color.green)
-                )
-            }
+                    .padding(2.dp),
+                contentPadding = PaddingValues(2.dp),
+                text = stringResource(R.string.forgot_password),
+                onClick = navigateToPasswordRecovery
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -115,11 +113,21 @@ internal fun LoginScreen(
                     fontSize = 14.sp
                 )
             }
-            GoogleSignInButton {
+            GoogleSignInButton(text = stringResource(R.string.sign_in_with_google)) {
                 //TODO: OnClickImpl
             }
 
-            SignUpButton(onClick = navigateToSignUp)
+            Row(
+                modifier = modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(text = stringResource(id = R.string.not_a_member_yet))
+                NonBackgroundTextButton(
+                    text = stringResource(R.string.sign_up),
+                    onClick = navigateToSignUp
+                )
+            }
         }
     }
 }
@@ -130,6 +138,7 @@ fun DefaultPreview() {
     LoginScreen(navigateToSignUp = {},
         navigateToPasswordRecovery = {},
         loginScreenUiState = LoginUiState.Empty,
+        navigationState = false,
         onAttemptLogin = { _: String, _: String -> },
         navigateToHome = {})
 }

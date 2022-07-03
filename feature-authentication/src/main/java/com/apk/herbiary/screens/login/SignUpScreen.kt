@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -81,15 +82,15 @@ internal fun SignUpScreen(onBackClick: () -> Unit) {
                     contentColor = colorResource(id = R.color.white)
                 ),
                 contentPadding = PaddingValues(vertical = 12.dp, horizontal = 12.dp),
-                shape = RoundedCornerShape(28.dp)
+                shape = MaterialTheme.shapes.large
             ) {
                 Text(
                     stringResource(id = R.string.sign_up),
-                    fontSize = 14.sp
+                    style = MaterialTheme.typography.button
                 )
             }
 
-            GoogleSignInButton {
+            GoogleSignInButton(text = stringResource(R.string.sign_in_with_google)) {
                 //TODO: OnClickImpl
             }
 
