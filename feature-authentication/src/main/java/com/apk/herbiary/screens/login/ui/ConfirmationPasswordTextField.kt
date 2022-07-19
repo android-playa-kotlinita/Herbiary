@@ -16,18 +16,22 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import com.apk.herbiary.feature.authentication.R
 
 @Composable
-fun PasswordTextField(
+fun ConfirmationPasswordTextField(
     modifier: Modifier = Modifier,
     password: String,
+    confirmPassword: String,
     onTextChange: (String) -> Unit,
     labelText: String,
     hasError: Boolean,
 ) {
     val focusManager = LocalFocusManager.current
     var showPassword by remember { mutableStateOf(false) }
+    val matchError = remember { mutableStateOf(false) }
+
 
     Column(
         modifier = modifier
@@ -74,4 +78,10 @@ fun PasswordTextField(
             colors = TextFieldDefaults.outlinedTextFieldColors()
         )
     }
+}
+
+@Preview
+@Composable
+fun DefaultPreview(){
+    ConfirmationPasswordTextField(password = "", onTextChange = {}, labelText = "", hasError = false, confirmPassword = "")
 }

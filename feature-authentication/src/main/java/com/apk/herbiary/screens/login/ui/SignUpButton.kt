@@ -1,4 +1,4 @@
-package com.apk.herbiary.screens.login
+package com.apk.herbiary.screens.login.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,7 +25,7 @@ fun SignUpButton(modifier: Modifier = Modifier) {
     ) {
         Text(text = stringResource(id = R.string.not_a_member_yet))
         TextButton(onClick = { /*TODO*/ }, contentPadding = PaddingValues(2.dp)) {
-            Text(stringResource(R.string.sign_up), fontSize = 12.sp, color = Color.Black)
+            Text(stringResource(R.string.sign_up), fontSize = 12.sp, color = colorResource(id = R.color.green))
         }
     }
 }
