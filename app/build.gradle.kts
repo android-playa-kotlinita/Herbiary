@@ -2,7 +2,8 @@ plugins {
     id("com.apk.herbiary.application")
     id("com.apk.herbiary.application.compose")
     id("com.google.gms.google-services")
-    id("kotlin-kapt")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
     id("com.apk.herbiary.application.jacoco")
     id("jacoco")
 }
@@ -22,7 +23,14 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-DEBUG"
         }
     }
 
@@ -34,11 +42,17 @@ android {
 }
 
 dependencies {
+    //module
+    implementation(project(":feature-authentication"))
+    implementation(project(":feature-garden"))
+    implementation(project(":core-common"))
+    implementation(project(":core-ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.tooling.preview)
@@ -49,11 +63,6 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.hilt.lifecycle.viewmodel)
     implementation(libs.hilt.navigation.compose)
-
-    //module
-    implementation(project(":feature-authentication"))
-
 
 }
