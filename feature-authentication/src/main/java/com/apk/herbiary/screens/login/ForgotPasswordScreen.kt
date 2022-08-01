@@ -1,29 +1,53 @@
 package com.apk.herbiary.screens.login
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.apk.herbiary.core.ui.ui.AppLogo
 import com.apk.herbiary.feature.authentication.R
-import com.apk.herbiary.screens.login.ui.AppLogo
-import com.apk.herbiary.screens.login.ui.ConfirmationPasswordTextField
-import com.apk.herbiary.screens.login.ui.PasswordTextField
-import com.apk.herbiary.screens.login.ui.SignUpButton
-import java.time.temporal.TemporalAdjusters.next
 
 @Composable
-fun ForgotPasswordScreen(navController: NavHostController) {
+fun ForgotPasswordRoute(
+    onBackClick: () -> Unit,
+    viewModel: ForgotPasswordViewModel = hiltViewModel()
+) {
+    val uiState by viewModel.uiState.collectAsState()
+    ForgotPasswordScreen(
+        onBackClick = onBackClick,
+        forgotPasswordUiState = uiState,
+        onPasswordResetRequest = viewModel::sendPasswordReset,
+        onEmailChange = viewModel::onEmailChanged,
+    )
+}
+
+@Composable
+fun ForgotPasswordScreen(
+    forgotPasswordUiState: ForgotPasswordUiState,
+    onBackClick: () -> Unit,
+    onPasswordResetRequest: () -> Unit,
+    onEmailChange: (String) -> Unit,
+) {
     Surface {
         Column(
             modifier = Modifier
@@ -50,26 +74,25 @@ fun ForgotPasswordScreen(navController: NavHostController) {
                 modifier = Modifier.align(Alignment.Start)
             )
 
-            var text by remember { mutableStateOf("") }
-
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = text,
-                onValueChange = { text = it },
+                value = forgotPasswordUiState.email,
+                onValueChange = onEmailChange,
                 label = { Text(stringResource(id = R.string.username)) }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = onPasswordResetRequest,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = colorResource(id = R.color.green),
                     contentColor = colorResource(id = R.color.white)
                 ),
                 contentPadding = PaddingValues(vertical = 12.dp, horizontal = 12.dp),
-                shape = RoundedCornerShape(28.dp)
+                shape = RoundedCornerShape(28.dp),
+                enabled = forgotPasswordUiState.isContinueButtonEnabled
             ) {
                 Text(
                     stringResource(id = R.string.continue_text),
@@ -84,5 +107,6 @@ fun ForgotPasswordScreen(navController: NavHostController) {
 @Preview
 @Composable
 fun ForgotPasswordPreview() {
-    ForgotPasswordScreen(navController = rememberNavController())
+    ForgotPasswordScreen(forgotPasswordUiState = ForgotPasswordUiState(
+    ), onBackClick = {}, onPasswordResetRequest = {}, onEmailChange = {})
 }
