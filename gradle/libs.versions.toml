@@ -22,6 +22,7 @@ androidxUiAutomator = "2.2.0"
 androidxWork = "2.7.1"
 coil = "2.0.0-rc01"
 firestore = "24.0.1"
+firebaseAuth = "21.0.5"
 googleServices = "4.3.10"
 hilt = "2.41"
 hiltExt = "1.0.0"
@@ -35,15 +36,20 @@ kotlinxDatetime = "0.3.1"
 kotlinxSerializationJson = "1.3.1"
 ksp = "1.6.21-1.0.5"
 ktlint = "0.43.0"
+lint = "30.2.1"
 material3 = "1.5.0-alpha05"
+moshi = "1.13.0"
 okhttp = "4.9.3"
+playServicesCoroutines = "1.6.0"
 protobuf = "3.20.0"
 protobufPlug = "0.8.18"
 retrofit = "2.9.0"
 retrofitKotlinxSerializationJson = "0.8.0"
+robolectric = "4.8"
 room = "2.4.2"
 secrets = "2.0.1"
-moshi = "1.13.0"
+spotless = "6.7.2"
+strikt = "0.34.1"
 
 [libraries]
 android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -73,18 +79,12 @@ androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "
 androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiAutomator" }
 androidx-work-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidxWork" }
 androidx-work-testing = { group = "androidx.work", name = "work-testing", version.ref = "androidxWork" }
-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firestore"}
-google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices"}
-moshi = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
-retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
-coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil"}
-coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
-coil-kt-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil"}
+coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+coil-kt-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuth" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firestore" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
 hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
@@ -93,6 +93,20 @@ hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testi
 hilt-gradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 hilt-lifecycle-viewmodel = { group = "androidx.hilt", name = "hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewModel" }
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "lint" }
+moshi = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+play-services-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "playServicesCoroutines" }
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+spotless-gradlePlugin = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
+strikt = { group = "io.strikt", name = "strikt-core", version.ref = "strikt" }
 
 
 [plugins]

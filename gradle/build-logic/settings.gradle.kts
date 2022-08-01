@@ -1,11 +1,12 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-dependencyResolutionManagement{
-    versionCatalogs{
-        create("libs"){
+enableFeaturePreview("VERSION_CATALOGS")
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
             from(files("../libs.versions.toml"))
         }
     }
-    repositories{
+    repositories {
         google()
         mavenCentral()
     }
