@@ -11,6 +11,4 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<manifest package="com.apk.herbiary.core.common">
-
-</manifest>
+<manifest package="com.apk.herbiary.feature.authenticator"/>

@@ -13,6 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
-gradle/build-logic/convention/build
 **/build
 .idea/
