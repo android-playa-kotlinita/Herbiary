@@ -3,7 +3,7 @@
     <string name="module_name">Auth</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Sign in</string>
     <string name="app_name">Herbiary</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="forgot_password">Forgot password?</string>
@@ -17,4 +17,15 @@
     <string name="reset_password">Reset password</string>
     <string name="password_change">Password Reset</string>
     <string name="password_reset_description">Enter your new password</string>
+    <string name="error_email_input">Non valid input</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="invalid_password_format">Invalid password</string>
+    <string name="passwords_doesnt_match">Passwords doesn\'t match</string>
+    <string name="password_visibility">Password visibility</string>
+    <string name="confirmation_password_visibility">Confirmation password visibility</string>
+    <string name="password_min_length">Must have 8 characters</string>
+    <string name="password_capital_letter">Must have at least one capital letter</string>
+    <string name="password_lower_letter">Must have at least one lower case letter</string>
+    <string name="password_digit_constraint">Must have at least one digit</string>
+    <string name="password_special_character_constraint">Must have at least one special character</string>
 </resources>
