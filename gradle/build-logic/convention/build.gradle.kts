@@ -7,6 +7,7 @@ group = "com.apk.herbiay.build-logic"
 dependencies {
     implementation(libs.android.gradle)
     implementation(libs.kotlin.gradlePlugin)
+    implementation(libs.spotless.gradlePlugin)
 }
 
 java {
@@ -32,6 +33,10 @@ gradlePlugin {
         register("androidLibrary") {
             id = "com.apk.herbiary.library"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("spotless") {
+            id = "com.apk.herbiary.spotless"
+            implementationClass = "SpotlessConventionPlugin"
         }
     }
 }
